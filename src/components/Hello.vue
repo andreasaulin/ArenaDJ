@@ -2,7 +2,7 @@
   <div class="hello">
     <b-container fluid>
       <b-row>
-        <b-col sm="3" style="padding-left: 0px;">
+        <b-col sm="3" style="padding-left: 0px; padding-right: 0px;">
           <CategoryList :categories="categories"></CategoryList>
         </b-col>
         <b-col sm="9">
