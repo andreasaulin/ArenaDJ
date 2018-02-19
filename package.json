@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "bootstrap-vue": "^2.0.0-rc.1",
     "firebase": "^4.10.0",
     "vue": "^2.5.2",
     "vue-howler": "^0.7.0",
