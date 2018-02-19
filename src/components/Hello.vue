@@ -1,5 +1,12 @@
 <template>
   <div class="hello">
+    <header>
+      <div class="logo"><icon name="headphones"></icon> ArenaDJ</div>
+      <div class="player">
+        <AudioPlayer :html5=true :sources="audioSources" :loop="true" ref="audio"></AudioPlayer>
+      </div>
+      <div class="settings"><icon name="cog"></icon></div>
+    </header>
     <b-container fluid>
       <b-row>
         <b-col sm="3" style="padding-left: 0px; padding-right: 0px;">
@@ -15,7 +22,6 @@
             <option v-for="category in categories" v-bind:value="category.categoryName" :key="category.key">{{ category.categoryName }}</option>
           </select>
           <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
-          <AudioPlayer :html5=true :sources="audioSources" :loop="true"></AudioPlayer>
         </b-col>
       </b-row>
     </b-container>
@@ -69,6 +75,8 @@ export default {
     },
     playCategory (category) {
       this.audioSources = this.playCategories[category]
+      this.$refs.audio.autoplay = true
+      this.$refs.audio.play()
     },
     shuffleArray (array) {
       let currentIndex = array.length
@@ -151,11 +159,5 @@ li {
 
 a {
   color: #35495E;
-}
-.hello {
-  height: 100%;
-}
-.container-fluid {
-  height: 100%;
 }
 </style>

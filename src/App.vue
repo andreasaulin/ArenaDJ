@@ -1,10 +1,6 @@
 <template>
   <div id="app">
     <main>
-      <header>
-        <div style="float:left;"><icon name="headphones"></icon> ArenaDJ</div>
-        <div v-if="isLoggedIn" style="float: right;"><icon name="cog"></icon></div>
-      </header>
       <router-view></router-view>
     </main>
   </div>
@@ -12,18 +8,14 @@
 
 <script>
 export default {
-  name: 'app',
-  computed: {
-    isLoggedIn: function () {
-      return this.$route.meta.requiresAuth
-    }
-  }
+  name: 'app'
 }
 </script>
 
 <style>
 body {
   margin: 0;
+  background-color: #35495E;
 }
 
 #app {
@@ -36,6 +28,7 @@ body {
 main {
   text-align: center;
   height: 100vh;
+  background-color: #ffffff;
 }
 
 header {
@@ -44,13 +37,31 @@ header {
   padding: 0 16px 0 24px;
   background-color: #35495E;
   color: #ffffff;
-}
-
-header div {
   font-size: 20px;
   line-height: 1;
   letter-spacing: .02em;
   font-weight: 400;
-  padding-top: 16px;
+  display: flex;
+}
+
+header .logo {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+header .player {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .settings {
+   flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 </style>
