@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <header>
-      <div style="float:left;"><icon name="headphones"></icon> ArenaDJ</div>
-      <div v-if="isLoggedIn" style="float: right;"><icon name="cog"></icon></div>
-    </header>
     <main>
+      <header>
+        <div style="float:left;"><icon name="headphones"></icon> ArenaDJ</div>
+        <div v-if="isLoggedIn" style="float: right;"><icon name="cog"></icon></div>
+      </header>
       <router-view></router-view>
     </main>
   </div>
@@ -35,7 +35,7 @@ body {
 
 main {
   text-align: center;
-  margin-top: 40px;
+  height: 100vh;
 }
 
 header {

@@ -1,22 +1,31 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <button v-on:click="addCategory">Add category</button>
-    <button v-on:click="logout">Log out</button>
-    <button v-on:click="playCategory('Test')">Play test</button>
-    <br><br>
-    <input type="file" multiple accept="image/*" @change="detectFiles($event.target.files)">
-    <select v-model="uploadCategory">
-      <option v-for="category in categories" v-bind:value="category.categoryName" :key="category.key">{{ category.categoryName }}</option>
-    </select>
-    <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
-    <AudioPlayer :html5=true :sources="audioSources" :loop="true"></AudioPlayer>
+    <b-container fluid>
+      <b-row>
+        <b-col sm="3" style="padding-left: 0px; padding-right: 0px;">
+          <CategoryList :categories="categories"></CategoryList>
+        </b-col>
+        <b-col sm="9">
+          <button v-on:click="addCategory">Add category</button>
+          <button v-on:click="logout">Log out</button>
+          <button v-on:click="playCategory('Test')">Play test</button>
+          <br><br>
+          <input type="file" multiple accept="image/*" @change="detectFiles($event.target.files)">
+          <select v-model="uploadCategory">
+            <option v-for="category in categories" v-bind:value="category.categoryName" :key="category.key">{{ category.categoryName }}</option>
+          </select>
+          <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
+          <AudioPlayer :html5=true :sources="audioSources" :loop="true"></AudioPlayer>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
 import firebase from '@/firebase/'
 import AudioPlayer from '@/components/audio-player.vue'
+import CategoryList from '@/components/categoryList.vue'
 
 let db = firebase.database()
 let storage = firebase.storage()
@@ -26,11 +35,11 @@ let songsRef = db.ref('songs')
 export default {
   name: 'hello',
   components: {
-    AudioPlayer
+    AudioPlayer,
+    CategoryList
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js PWA',
       newCategory: {
         categoryName: 'Test',
         categoryKey: 't'
@@ -142,5 +151,11 @@ li {
 
 a {
   color: #35495E;
+}
+.hello {
+  height: 100%;
+}
+.container-fluid {
+  height: 100%;
 }
 </style>
