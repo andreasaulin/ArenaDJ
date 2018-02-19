@@ -59,7 +59,7 @@ export default {
       })
     },
     playCategory (category) {
-      this.audioSources = this.shuffleArray(this.songs.filter(song => song.category === category).map(song => song.url))
+      this.audioSources = this.playCategories[category]
     },
     shuffleArray (array) {
       let currentIndex = array.length
@@ -113,6 +113,11 @@ export default {
       }
       for (var i = 0; i < to.length; i++) {
         this.playCategories[to[i].categoryName] = []
+      }
+    },
+    'songs' (to, from) {
+      for (var i = 0; i < this.categories.length; i++) {
+        this.playCategories[this.categories[i].categoryName] = this.shuffleArray(this.songs.filter(song => song.category === this.categories[i].categoryName).map(song => song.url))
       }
     }
   }

@@ -6,10 +6,13 @@ import Vue from 'vue'
 import VueFire from 'vuefire'
 import App from './App'
 import router from './router'
-
+import 'vue-awesome/icons'
+import Icon from 'vue-awesome/components/Icon'
 Vue.use(VueFire)
 
 Vue.config.productionTip = false
+
+Vue.component('icon', Icon)
 
 let app
 

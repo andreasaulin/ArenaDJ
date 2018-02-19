@@ -9,7 +9,7 @@
 <template>
   <div>
     <span>Total duration: {{ duration }} seconds</span>
-    <span>Progress: {{ (progress * 100) }}%</span>
+    <span>Progress: {{ parseFloat(progress * 100 * (duration / 100)).toFixed(2) }} - {{ duration }}</span>
     <button @click="togglePlayback">{{ playing ? 'Pause' : 'Play' }}</button>
     <button @click="stop">Stop</button>
   </div>

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <span>Vue.js PWA</span>
+      <div style="float:left;"><icon name="headphones"></icon> ArenaDJ</div>
+      <div v-if="isLoggedIn" style="float: right;"><icon name="cog"></icon></div>
     </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
       <router-view></router-view>
     </main>
   </div>
@@ -12,7 +12,12 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  computed: {
+    isLoggedIn: function () {
+      return this.$route.meta.requiresAuth
+    }
+  }
 }
 </script>
 
@@ -41,14 +46,11 @@ header {
   color: #ffffff;
 }
 
-header span {
-  display: block;
-  position: relative;
+header div {
   font-size: 20px;
   line-height: 1;
   letter-spacing: .02em;
   font-weight: 400;
-  box-sizing: border-box;
   padding-top: 16px;
 }
 </style>
